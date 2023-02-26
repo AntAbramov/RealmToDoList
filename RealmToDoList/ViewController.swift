@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  RealmToDoList
-//
-//  Created by Anton Abramov on 26.02.2023.
-//
-
 import UIKit
 
 class ViewController: UIViewController {

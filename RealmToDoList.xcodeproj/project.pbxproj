@@ -60,8 +60,8 @@
 				3A40998929AB9371000AEF7F /* SceneDelegate.swift */,
 				3A40998B29AB9371000AEF7F /* ViewController.swift */,
 				3A40998D29AB9371000AEF7F /* Main.storyboard */,
-				3A40999029AB9373000AEF7F /* Assets.xcassets */,
 				3A40999229AB9373000AEF7F /* LaunchScreen.storyboard */,
+				3A40999029AB9373000AEF7F /* Assets.xcassets */,
 				3A40999529AB9373000AEF7F /* Info.plist */,
 			);
 			path = RealmToDoList;

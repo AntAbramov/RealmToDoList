@@ -1,0 +1,10 @@
+disabled_rules:
+  - trailing_whitespace
+  - comment_spacing
+  - line_length
+  - mark
+  - identifier_name
+
+excluded:
+  - Carthage
+  - Pods
