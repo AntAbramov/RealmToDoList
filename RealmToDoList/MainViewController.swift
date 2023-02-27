@@ -11,13 +11,7 @@ final class MainViewController: UIViewController {
     }
     
     // MARK: - DataSource
-    private var tasksDataSource: [String] = [] {
-        didSet {
-            DispatchQueue.main.async {
-                self.mainTableView.reloadData()
-            }
-        }
-    }
+    private var tasksDataSource: [String] = []
     
     // MARK: - VC Lifesycle
     override func viewDidLoad() {
@@ -39,7 +33,10 @@ final class MainViewController: UIViewController {
         let alertAddAction = UIAlertAction(title: "Add task", style: .default) { [weak self] _ in
             guard let textFieldText = alertController.textFields?.first?.text, !textFieldText.isEmpty else { return }
             guard let self = self else { return }
+            
             self.tasksDataSource.append(textFieldText)
+            let indexPath = IndexPath(row: self.tasksDataSource.count - 1, section: 0)
+            self.mainTableView.insertRows(at: [indexPath], with: .fade)
         }
         let alertCancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         alertController.addAction(alertCancelAction)
