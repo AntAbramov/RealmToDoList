@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A40998829AB9371000AEF7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40998729AB9371000AEF7F /* AppDelegate.swift */; };
 		3A40998A29AB9371000AEF7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40998929AB9371000AEF7F /* SceneDelegate.swift */; };
-		3A40998C29AB9371000AEF7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40998B29AB9371000AEF7F /* ViewController.swift */; };
+		3A40998C29AB9371000AEF7F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40998B29AB9371000AEF7F /* MainViewController.swift */; };
 		3A40998F29AB9371000AEF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A40998D29AB9371000AEF7F /* Main.storyboard */; };
 		3A40999129AB9373000AEF7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A40999029AB9373000AEF7F /* Assets.xcassets */; };
 		3A40999429AB9373000AEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A40999229AB9373000AEF7F /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 		3A40998429AB9371000AEF7F /* RealmToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealmToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A40998729AB9371000AEF7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A40998929AB9371000AEF7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A40998B29AB9371000AEF7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A40998B29AB9371000AEF7F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3A40998E29AB9371000AEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A40999029AB9373000AEF7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A40999329AB9373000AEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			children = (
 				3A40998729AB9371000AEF7F /* AppDelegate.swift */,
 				3A40998929AB9371000AEF7F /* SceneDelegate.swift */,
-				3A40998B29AB9371000AEF7F /* ViewController.swift */,
+				3A40998B29AB9371000AEF7F /* MainViewController.swift */,
 				3A40998D29AB9371000AEF7F /* Main.storyboard */,
 				3A40999229AB9373000AEF7F /* LaunchScreen.storyboard */,
 				3A40999029AB9373000AEF7F /* Assets.xcassets */,
@@ -88,7 +88,6 @@
 				DE188EFEC283CBA8F20C81C2 /* Pods-RealmToDoList.debug.xcconfig */,
 				E19F309C35BB0F7CC082E503 /* Pods-RealmToDoList.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,7 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A40998C29AB9371000AEF7F /* ViewController.swift in Sources */,
+				3A40998C29AB9371000AEF7F /* MainViewController.swift in Sources */,
 				3A40998829AB9371000AEF7F /* AppDelegate.swift in Sources */,
 				3A40998A29AB9371000AEF7F /* SceneDelegate.swift in Sources */,
 			);
