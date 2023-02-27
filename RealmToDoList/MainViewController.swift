@@ -19,7 +19,9 @@ final class MainViewController: UIViewController {
     
     private var tasksDataSource: [String] = [] {
         didSet {
-            mainTableView.reloadData()
+            DispatchQueue.main.async {
+                self.mainTableView.reloadData()
+            }
         }
     }
     
@@ -85,4 +87,12 @@ extension MainViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tasksDataSource.remove(at: indexPath.row)
+            mainTableView.deleteRows(at: [indexPath], with: .top)
+        }
+    }
+    
 }
+
