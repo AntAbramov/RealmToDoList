@@ -1,22 +1,16 @@
 import UIKit
 import RealmSwift
 
-struct Constants {
-    static let mainCellId = "mainCellId"
-}
-
-class TaskList: Object {
-    @objc dynamic var task = ""
-    @objc dynamic var completed = false
-}
-
 final class MainViewController: UIViewController {
+    
+    // MARK: - UI
     private let mainTableView = UITableView()
     private var addTaskButton: UIBarButtonItem {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createAlert))
         return button
     }
     
+    // MARK: - DataSource
     private var tasksDataSource: [String] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -44,9 +38,8 @@ final class MainViewController: UIViewController {
         alertController.addTextField()
         let alertAddAction = UIAlertAction(title: "Add task", style: .default) { [weak self] _ in
             guard let textFieldText = alertController.textFields?.first?.text, !textFieldText.isEmpty else { return }
-            if let text = alertController.textFields?.first?.text {
-                self?.tasksDataSource.append(text)
-            }
+            guard let self = self else { return }
+            self.tasksDataSource.append(textFieldText)
         }
         let alertCancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         alertController.addAction(alertCancelAction)

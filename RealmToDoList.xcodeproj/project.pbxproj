@@ -13,6 +13,8 @@
 		3A40998F29AB9371000AEF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A40998D29AB9371000AEF7F /* Main.storyboard */; };
 		3A40999129AB9373000AEF7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A40999029AB9373000AEF7F /* Assets.xcassets */; };
 		3A40999429AB9373000AEF7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A40999229AB9373000AEF7F /* LaunchScreen.storyboard */; };
+		3A4099BC29ACBFA8000AEF7F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4099BB29ACBFA8000AEF7F /* Constants.swift */; };
+		3A4099BE29ACBFD9000AEF7F /* RealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4099BD29ACBFD9000AEF7F /* RealmObject.swift */; };
 		BF01E70F9E0D3FCCA0A58C9D /* Pods_RealmToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D718FC1D85D13D73D699D0D /* Pods_RealmToDoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		3A40999029AB9373000AEF7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A40999329AB9373000AEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A40999529AB9373000AEF7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A4099BB29ACBFA8000AEF7F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3A4099BD29ACBFD9000AEF7F /* RealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObject.swift; sourceTree = "<group>"; };
 		6D718FC1D85D13D73D699D0D /* Pods_RealmToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE188EFEC283CBA8F20C81C2 /* Pods-RealmToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmToDoList.debug.xcconfig"; path = "Target Support Files/Pods-RealmToDoList/Pods-RealmToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 		E19F309C35BB0F7CC082E503 /* Pods-RealmToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmToDoList.release.xcconfig"; path = "Target Support Files/Pods-RealmToDoList/Pods-RealmToDoList.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 			children = (
 				3A40998729AB9371000AEF7F /* AppDelegate.swift */,
 				3A40998929AB9371000AEF7F /* SceneDelegate.swift */,
+				3A4099BB29ACBFA8000AEF7F /* Constants.swift */,
+				3A4099BD29ACBFD9000AEF7F /* RealmObject.swift */,
 				3A40998B29AB9371000AEF7F /* MainViewController.swift */,
 				3A40998D29AB9371000AEF7F /* Main.storyboard */,
 				3A40999229AB9373000AEF7F /* LaunchScreen.storyboard */,
@@ -209,6 +215,8 @@
 				3A40998C29AB9371000AEF7F /* MainViewController.swift in Sources */,
 				3A40998829AB9371000AEF7F /* AppDelegate.swift in Sources */,
 				3A40998A29AB9371000AEF7F /* SceneDelegate.swift in Sources */,
+				3A4099BE29ACBFD9000AEF7F /* RealmObject.swift in Sources */,
+				3A4099BC29ACBFA8000AEF7F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
