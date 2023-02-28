@@ -11,7 +11,11 @@ final class MainViewController: UIViewController {
     }
     
     // MARK: - DataSource
-    private var tasksDataSource: [String] = []
+    private var tasksDataSource: [String] = [] {
+        didSet {
+            print(tasksDataSource.count)
+        }
+    }
     
     // MARK: - VC Lifesycle
     override func viewDidLoad() {
