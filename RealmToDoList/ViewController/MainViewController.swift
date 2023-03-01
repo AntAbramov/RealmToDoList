@@ -28,6 +28,10 @@ final class MainViewController: UIViewController {
         setConstraintsForTableView()
     }
     
+    deinit {
+        notificationToken?.invalidate()
+    }
+    
     @objc func createAlert() {
         let alertController = UIAlertController(title: "Creating task", message: "Fill task name", preferredStyle: .alert)
         alertController.addTextField()
@@ -65,9 +69,9 @@ final class MainViewController: UIViewController {
                 }
             case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                 tableView.beginUpdates()
-                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
-                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .fade)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .fade)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .fade)
                 tableView.endUpdates()
             case .error(let error):
                 fatalError("\(error)")
@@ -113,9 +117,7 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let tasks = Array(realm.objects(Task.self))
-            
             let currentTask = tasks[indexPath.row]
-            
             try! realm.write {
                 realm.delete(currentTask)
             }
