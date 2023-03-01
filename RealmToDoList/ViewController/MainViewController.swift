@@ -10,20 +10,17 @@ final class MainViewController: UIViewController {
         return button
     }
     
-    // MARK: - DataSource
-    private var tasksDataSource: [String] = [] {
-        didSet {
-            print(tasksDataSource.count)
-        }
-    }
+    // MARK: - Realm
+    private let realm = try! Realm(configuration: .defaultConfiguration)
+    private var notificationToken: NotificationToken? = nil
     
     // MARK: - VC Lifesycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "To Do List"
         configureMainTableView()
         configureAddTaskButton()
-        tasksDataSource.append("Hello")
-        title = "To Do List"
+        configureRealm()
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,14 +35,44 @@ final class MainViewController: UIViewController {
             guard let textFieldText = alertController.textFields?.first?.text, !textFieldText.isEmpty else { return }
             guard let self = self else { return }
             
-            self.tasksDataSource.append(textFieldText)
-            let indexPath = IndexPath(row: self.tasksDataSource.count - 1, section: 0)
-            self.mainTableView.insertRows(at: [indexPath], with: .fade)
+            let task = Task()
+            task.taskName = textFieldText
+            task.isCompleted = false
+            
+            try! self.realm.write {
+                self.realm.add(task)
+            }
+            
         }
         let alertCancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         alertController.addAction(alertCancelAction)
         alertController.addAction(alertAddAction)
         self.present(alertController, animated: true)
+    }
+    
+    // MARK: - RealmConfiguring
+    
+    func configureRealm() {
+        
+        let loadedTasks = realm.objects(Task.self)
+        notificationToken = loadedTasks.observe { [weak self] (result) in
+            guard let tableView = self?.mainTableView else { return }
+            
+            switch result {
+            case .initial:
+                DispatchQueue.main.async {
+                    tableView.reloadData()
+                }
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.endUpdates()
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
     
     // MARK: - Config
@@ -72,19 +99,26 @@ final class MainViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tasksDataSource.count
+        let tasks = realm.objects(Task.self)
+        return tasks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mainTableView.dequeueReusableCell(withIdentifier: Constants.mainCellId, for: indexPath)
-        cell.textLabel?.text = tasksDataSource[indexPath.row]
+        let tasks = Array(realm.objects(Task.self))
+        cell.textLabel?.text = tasks[indexPath.row].taskName
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tasksDataSource.remove(at: indexPath.row)
-            mainTableView.deleteRows(at: [indexPath], with: .top)
+            let tasks = Array(realm.objects(Task.self))
+            
+            let currentTask = tasks[indexPath.row]
+            
+            try! realm.write {
+                realm.delete(currentTask)
+            }
         }
     }
     
