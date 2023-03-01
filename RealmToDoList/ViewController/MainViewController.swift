@@ -6,8 +6,7 @@ final class MainViewController: UIViewController {
     // MARK: - UI
     private let mainTableView = UITableView()
     private var addTaskButton: UIBarButtonItem {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createAlert))
-        return button
+        UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createAlert))
     }
     
     // MARK: - Realm
@@ -20,7 +19,7 @@ final class MainViewController: UIViewController {
         title = "To Do List"
         configureMainTableView()
         configureAddTaskButton()
-        configureRealm()
+        setupRealmObserver()
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,7 +45,6 @@ final class MainViewController: UIViewController {
             try! self.realm.write {
                 self.realm.add(task)
             }
-            
         }
         let alertCancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         alertController.addAction(alertCancelAction)
@@ -54,9 +52,8 @@ final class MainViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     
-    // MARK: - RealmConfiguring
-    
-    func configureRealm() {
+    // MARK: - Setup Realm Observer
+    func setupRealmObserver() {
         
         let loadedTasks = realm.objects(Task.self)
         notificationToken = loadedTasks.observe { [weak self] (result) in
@@ -79,7 +76,7 @@ final class MainViewController: UIViewController {
         }
     }
     
-    // MARK: - Config
+    // MARK: - Config UI
     private func configureAddTaskButton() {
         navigationItem.rightBarButtonItem = addTaskButton
     }
