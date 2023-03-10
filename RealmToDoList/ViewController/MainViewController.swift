@@ -66,9 +66,9 @@ final class MainViewController: UIViewController {
                 }
             case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                 tableView.beginUpdates()
-                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .fade)
-                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .fade)
-                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .fade)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0) }), with: .automatic)
                 tableView.endUpdates()
             case .error(let error):
                 fatalError("\(error)")
